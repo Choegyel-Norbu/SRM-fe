@@ -1,0 +1,118 @@
+nav{
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid silver;
+  background-color: white;
+}
+.logo{
+  width: 90px;
+  height: 90px;
+  display: inline;
+}
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 0px 30px;
+  font-size: 14px;
+  line-height: 40px;
+  text-transform: uppercase;
+  position: relative;
+  color: #282c34;
+}
+nav ul li:not(.not-selected){
+  padding: 10px 30px;
+}
+
+.not-selected{
+  border: 1px solid #282c34;
+  border-radius: 70px;
+  padding: -10px 20px;
+  margin-left: 10px;
+}
+.not-selected:hover{
+  cursor: pointer;
+  color: blue;
+  background-color: bisque;
+  border: 1px white solid;
+}
+nav ul li:not(.not-selected)::after,
+nav ul li:not(.not-selected)::before{
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  opacity: 0.3;
+  cursor: pointer;
+}
+nav ul li::before{
+  transition: transform ease 0.5s;
+  transform: scale(0, 1);
+}
+nav ul li:hover::before{
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  transform: scale(1, 1);
+}
+
+nav ul li::after{
+  transform: scale(1, 0);
+  transition: transform ease 0.5s;
+}
+nav ul li:hover::after{
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  transform: scale(1, 1);
+}
+#check{
+  display: none;
+}
+.hamberger{
+  color: rgba(144,139,145,0.61);
+  font-size: 30px;
+  margin-top: 30px;
+  margin-right: 20px;
+  float: right;
+  line-height: 30px;
+  display: none;
+}
+
+@media (max-width: 800px) {
+  label.logo{
+    padding-left: 20px;
+    margin-right: 10px;
+  }
+  nav ul li a{
+    font-size: 20px;
+    text-transform: none;
+  }
+  .hamberger{
+    display: block;
+  }
+  nav ul{
+    position: fixed;
+    top: 90px;
+    left: -1000px;
+    width: 100%;
+    transition: .5s;
+    height: 100%;
+  }
+  nav ul li{
+    display: block;
+    width: 100%;
+    color: black;
+    text-align: center;
+  }
+  nav ul li a:hover{
+    cursor: pointer;
+    color: black;
+  }
+  #check:checked ~ ul{
+    left: 0;
+  }
+}
